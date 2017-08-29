@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application 
+Comment=Comentario general
+Comment[es]=Comentario general
+Keywords=app;aplicación;engendro
+Categories=Utility
+Icon=/home/ptl28sev000/Documents/datos/pyqt/logo.png
+Name=Base de Datos lote 6
+Name[en]=Base de Datos lote 6
+Terminal=false
+Path=/home/ptl28sev000/Documents/datos/pyqt/
+Exec=/usr/bin/python3 /home/ptl28sev000/Documents/datos/pyqt/bd.py
+Hidden=false
+MimeType=application/x-python
+StartupNotify=true
+X-GNOME-Autostart-Delay=3
