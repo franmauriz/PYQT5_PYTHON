@@ -15,6 +15,7 @@ class Dialogo(QDialog):
 			self.btnBorrar.clicked.connect(self.borrarTabla)
 			self.btnTruncar.clicked.connect(self.truncarTabla)
 			self.btncargar.clicked.connect(self.cargarTabla)
+			self.btndesconectar.clicked.connect(self.desconectar)
 
 		def conexion(self):
 			base=self.combobd.currentText()
@@ -22,12 +23,18 @@ class Dialogo(QDialog):
 			self.db.setHostName("localhost")
 			self.db.setDatabaseName(str(base).lower())
 			self.db.setUserName("root")
-			self.db.setPassword("new-password")
+			self.db.setPassword("frandaniel10")
 			estado = self.db.open()
 			if estado == True:
 				return True
 			else:
-				return False				
+				return False
+
+		def desconectar(self):
+			if self.conexion():
+				QMessageBox.information(self,"Conexión","Se ha desconectado de " + self.combobd.currentText(),QMessageBox.Ok)
+				self.db.close()
+				self.comboTabla.clear()
 
 		def conectar(self):
 			if self.conexion() :

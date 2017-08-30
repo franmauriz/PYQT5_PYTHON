@@ -290,6 +290,11 @@
      <string>&amp;Conectar</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btndesconectar">
+    <property name="text">
+     <string>&amp;Desconectar</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
