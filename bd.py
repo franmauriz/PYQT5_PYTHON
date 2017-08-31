@@ -95,10 +95,10 @@ class Dialogo(QDialog):
 			else:
 				event.ignore()
 
-		def crearTabla(self):
-			if self.combobd.currentText().lower()=='lote6':
-				if self.cajaTabla.text() != '':
-					consulta = QSqlQuery()
+		def crearTabla(self):				
+			if self.cajaTabla.text() != '':
+				consulta = QSqlQuery()
+				if self.combobd.currentText().lower()=='lote6':					
 					sql = "CREATE TABLE "+ self.cajaTabla.text() +" ("
 					sql = sql +"ID varchar(100), "
 					sql = sql + "COD_LOTE_SA varchar(10), "
@@ -119,16 +119,37 @@ class Dialogo(QDialog):
 					sql = sql +"FECHA_BAJA varchar(100), "
 					sql = sql +"FECHA_INICIO_AMORTIZACION varchar(100), "
 					sql = sql +"IMPORTE varchar(100), "
-					sql = sql +"UNIDADES varchar(100));"
-					estado = consulta.exec(sql)
-					if estado == True:
-						QMessageBox.information(self, "Correcto", "Tabla creada con éxito.", QMessageBox.Ok)
-						self.rellenarComboTabla()
-					else:
-						QMessageBox.warning(self, "Error", self.db.lastError().text(), QMessageBox.Discard)
-				else:
-					QMessageBox.warning(self, "Error", "El nombre de la tabla a crear no esta informado.", QMessageBox.Discard)			
+					sql = sql +"UNIDADES varchar(100));"				
+				elif self.combobd.currentText().lower()=='pasarela' :
+					Sql = "CREATE TABLE "+ self.cajaTabla.text() +"( "
+					Sql = Sql + "DNTV_CAB varchar(255), "
+					Sql = Sql + "CICLO varchar(255), "
+					Sql = Sql + "FACT_NO varchar(255), "
+					Sql = Sql + "TELEF_EXT varchar(255), "
+					Sql = Sql + "FECHA_HORA varchar(255), "
+					Sql = Sql + "NO_RECEP varchar(255), "
+					Sql = Sql + "TIPO varchar(255), "
+					Sql = Sql + "DESTINO varchar(255), "
+					Sql = Sql + "DURACION varchar(255), "
+					Sql = Sql + "DURAC_SES varchar(255), "
+					Sql = Sql + "VOLUMEN varchar(255), "
+					Sql = Sql + "TIPO_FACT varchar(255), "
+					Sql = Sql + "TARIFA varchar(255), "
+					Sql = Sql + "DESCRIPCION varchar(255), "
+					Sql = Sql + "CANAL varchar(255), "
+					Sql = Sql + "EXT_ORIGEN varchar(255), "
+					Sql = Sql + "IMPORTE varchar(255), "
+					Sql = Sql + "IMPORTE_NETO varchar(255));"
 
+				estado = consulta.exec(sql)
+				if estado == True:
+					QMessageBox.information(self, "Correcto", "Tabla creada con éxito.", QMessageBox.Ok)
+					self.rellenarComboTabla()
+				else:
+					QMessageBox.warning(self, "Error", self.db.lastError().text(), QMessageBox.Discard)
+			else:
+				QMessageBox.warning(self, "Error", "El nombre de la tabla a crear no esta informado.", QMessageBox.Discard)
+		
 		def borrarTabla(self):
 			consulta = QSqlQuery()
 			tabla  = self.comboTabla.currentText()
