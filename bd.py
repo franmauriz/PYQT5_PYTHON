@@ -34,6 +34,12 @@ class Dialogo(QDialog):
 			if self.conexion():
 				QMessageBox.information(self,"Conexión","Se ha desconectado de " + self.combobd.currentText(),QMessageBox.Ok)
 				self.db.close()
+				self.cajaTabla.setEnabled(False)
+				self.btncrear.setEnabled(False)
+				self.btnBorrar.setEnabled(False)
+				self.btnTruncar.setEnabled(False)
+				self.btnabrir.setEnabled(False)
+				self.btncargar.setEnabled(False)
 				self.comboTabla.clear()
 
 		def conectar(self):
